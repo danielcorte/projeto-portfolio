@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
     margin: 0;
@@ -83,14 +83,14 @@ html::-webkit-scrollbar-thumb {
     border-bottom: 3px solid var(--principal-color);
 }
 
-#icon-menu {
+.icon-menu {
     font-size: 3.6rem;
     color: var(--principal-color);
     display: none;
 }
 
 @media (max-width:995px) {
-    #icon-menu {
+    .icon-menu {
         display: block;
     }
 
@@ -256,7 +256,7 @@ span {
 
 @keyframes words {
     0%, 34% {
-        content: 'Desenvolver Bosch';
+        content: 'Dev Bosch';
     }
 
     34%, 67% {
@@ -318,7 +318,7 @@ span {
 
 .service-box {
     background-color: var(--principal-color);
-    height: 350px;
+    height: 420px;
     border-radius: 3rem;
     cursor: pointer;
     transition: 0.3s ease;
@@ -339,6 +339,13 @@ span {
     justify-content: center;
     align-items: baseline;
     padding: 5em;
+}
+
+.heading {
+    text-align: center;
+    font-size: 6rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
 }
 
 .service-info h4 {
@@ -444,3 +451,280 @@ span {
 }
 
 /* Sessão de formação*/
+
+.education {
+    background: var(--secundaria-cf-color);
+}
+
+.education .timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.education .timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background: rgb(145, 134, 134);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+    z-index: -2px;
+}
+
+.education .container {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+.education .container::after {
+    content: '\f501';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    right: -17px;
+    background-color: rgb(240, 240, 240);
+    border: 4px solid var(--principal-color);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 100;
+    font-size: 1.89rem;
+    text-align: center;
+    font-weight: 600;
+    font-family: "Font Awesome\ 5 Free";
+    color: rgb(145, 134, 134);
+}
+
+.education .left {
+    left: 0;
+}
+
+.education .right {
+    left: 50%;
+}
+
+.education .left::before {
+    content: '';
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: 30px;
+    border: medium solid var(--principal-color);
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent var(--principal-color);
+}
+
+.education .right::before {
+    content: '';
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid var(--principal-color);
+    border-width: 10px 10px 10px 0;
+    border-color: transparent var(--principal-color) transparent transparent;
+}
+
+.education .right::after {
+    left: -16px;
+}
+
+.education .content {
+    background: var(--principal-color);
+    position: relative;
+    border-radius: 6px;
+}
+
+.education .content .tag {
+    font-size: 2.5rem;
+    padding-top: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.education .content .decs {
+    margin-left: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.education .content .tag h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.education .content .decs p {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+@media screen and (max-width:600px) {
+    .education .timeline {
+        margin-top: 2rem;
+    }
+
+    .education .timeline::after {
+        left: 31px;
+    }
+
+    .education .container {
+        width: 100%;
+        padding-left: 8rem;
+        padding-right: 2rem;
+    }
+
+    .education .container::before {
+        left: 61px;
+        border: medium solid var(--principal-color);
+        border-width: 10px 10px 10px 0;
+        border-color: transparent var(--principal-color) transparent transparent;
+    }
+
+    .education .left::after {
+        left: 15px;
+    }
+
+    .education .right::after {
+        left: 15px;
+    }
+
+    .education .right {
+        left: 0%;
+    }
+}
+
+/*Sessão de contato*/
+
+.contact form {
+    max-width: 70rem;
+    margin: 1rem auto;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.contact form .input-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contact form .input-box input,
+.contact form textarea {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--texto-color);
+    background: var(--cf-color);
+    border-radius: 0.8rem;
+    border: 2px solid var(--principal-color);
+    margin: 1rem 0;
+    resize: none;
+}
+
+.contact form .btn {
+    margin-top: 2rem;
+}
+
+/* Footer */
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    padding: 40px 0;
+    background-color: var(--principal-color);
+}
+
+.footer .social {
+    text-align: center;
+    padding-bottom: 25px;
+    color: black;
+}
+
+.footer .social a {
+    font-size: 25px;
+    color: black;
+    border: 2px solid black;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 10px;
+    transition: 0.3s ease;
+}
+
+.footer .social a:hover {
+    transform: scale(1.2)translateY(-5px);
+    background: black;
+    color: var(--principal-color);
+}
+
+.footer ul {
+    margin-top: 0;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.footer ul li a {
+    color: black;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s ease;
+}
+
+.footer ul li a:hover {
+    border-bottom: 3px solid black;
+}
+
+.footer ul li {
+    display: inline-block;
+    padding: 0px 15px;
+}
+
+.footer .copyright {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 16px;
+    color: black;
+}
+
+@media(max-width:1285px) {
+    html {
+        font-size: 55%;
+    }
+
+    .services-container {
+        padding-bottom: 7rem;
+        grid-template-columns: repeat(2, 1fr);
+        margin: 0 5rem;
+    }
+}
+
+@media(max-width:991px) {
+    .header {
+        padding: 2rem 3%;
+    }
+
+    .section {
+        padding: 10rem 3% 2rem;
+    }
+
+    .services {
+        padding-bottom: 7rem;
+    }
+
+    .footer {
+        padding: 2rem 3%;
+    }
+}
