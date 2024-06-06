@@ -398,6 +398,7 @@ span {
 
 .skills .container .row {
     display: grid;
+    align-content: center;
     grid-template-columns: repeat(6, 1fr);
     flex-wrap: wrap;
     gap: 1.8rem;
