@@ -221,7 +221,7 @@ span {
     box-shadow: 0 0 25px var(--principal-color);
 }
 
-.smart-text {
+/*.smart-text {
     font-size: 34px;
     font-weight: 600;
     min-width: 280px;
@@ -279,7 +279,7 @@ span {
     46%, 74% {
         width: calc(100% + 8px);
     }
-}
+}*/
 
 @media (max-width:1000px) {
     .home {
