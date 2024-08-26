@@ -2,7 +2,7 @@ const element = document.querySelector("#home > div.home-content > h3 > span");
 
 element.innerHTML = "";
 
-const words = ["Desenvolvedor", "Estudante de Ciência da Computação", "Full stack"];
+const words = ["Dev Bosch", "Estudante de CCo", "Full Stack"];
 
 const typingBar = "<span style'color: white; font-weight: 200;'>|<\span>";
 

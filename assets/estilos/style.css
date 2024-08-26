@@ -310,7 +310,7 @@ span {
     background: var(--secundaria-cf-color);
 }
 .services-container {
-    display: grid;
+    display: inline;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     gap: 2.5rem;
@@ -318,7 +318,7 @@ span {
 
 .service-box {
     background-color: var(--principal-color);
-    height: 500px;
+    height: 35vh;
     border-radius: 3rem;
     cursor: pointer;
     transition: 0.3s ease;
@@ -334,11 +334,11 @@ span {
 .service-box .service-info {
     display: flex;
     flex-direction: column;
-    text-align: left;
+    text-align: center;
     max-height: 200px;
     justify-content: center;
     align-items: baseline;
-    padding: 5em;
+    padding: 4em;
 }
 
 .heading {
@@ -397,7 +397,8 @@ span {
 }
 
 .skills .container .row {
-    display: grid;
+    display: flex;
+    margin: auto;
     align-content: center;
     grid-template-columns: repeat(6, 1fr);
     flex-wrap: wrap;
@@ -405,7 +406,9 @@ span {
 }
 
 .skills .container .bar {
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;*/
+    width: 18vw;
+    margin: auto;
     padding: 10px;
     border-radius: 1rem;
     background: var(--cf-color);
@@ -427,7 +430,8 @@ span {
 }
 
 .skills .container .bar .info span {
-    font-size: 2rem;
+    font-display: flex;
+    font-size: 1.5rem;
     font-weight: 500;
     margin-left: 0.5rem;
 }
