@@ -53,7 +53,6 @@ html::-webkit-scrollbar-thumb {
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-
 }
 
 .logo {
@@ -68,28 +67,46 @@ html::-webkit-scrollbar-thumb {
     transform: scale(1.1);
 }
 
+.navlist {
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+}
+
 .navlist a {
     font-size: 1.8rem;
-    color: var(--texto-color);
+    color: white; /* Cor padrão do texto */
     margin-left: 4rem;
     font-weight: 500;
     transition: 0.3s ease;
     border-bottom: 3px solid transparent;
 }
 
-.navlist a:hover, 
+.navlist a:hover {
+    color: var(--principal-color); /* Cor ao passar o mouse */
+}
+
 .navlist a.active {
-    color: var(--principal-color);
-    border-bottom: 3px solid var(--principal-color);
+    color: var(--principal-color); /* Cor do item ativo */
+    border-bottom: 3px solid var(--principal-color); /* Destaque adicional */
 }
 
 .icon-menu {
     font-size: 3.6rem;
     color: var(--principal-color);
     display: none;
+    cursor: pointer;
+    z-index: 110; /* Garantir que esteja acima do menu */
 }
 
-@media (max-width:995px) {
+/* Certifique-se de que o menu de navegação esteja visível em telas maiores */
+@media (min-width: 996px) {
+    .navlist {
+        display: flex; /* Exibe o menu de navegação em telas maiores */
+    }
+}
+
+@media (max-width: 995px) {
     .icon-menu {
         display: block;
     }
@@ -98,34 +115,33 @@ html::-webkit-scrollbar-thumb {
         position: absolute;
         top: 100%;
         right: 0;
-        width: 40%;
-        border-left: 3px solid var(--principal-color);
-        border-bottom: 3px solid var(-principal-color);
-        border-bottom-left-radius: 2rem;
-        padding: 1rem 3%;
+        width: 50%;
+        padding: 2rem;
         background-color: var(--secundaria-cf-color);
-        border-top: 0.1rem solid rgb(0, 0, 0, 0.1);
+        border-left: 3px solid var(--principal-color);
+        border-bottom: 3px solid var(--principal-color);
+        border-bottom-left-radius: 2rem;
         display: none;
+        flex-direction: column;
     }
 
     .navlist.active {
-        display: block;
+        display: flex;
     }
 
     .navlist a {
-        display: block;
         font-size: 2rem;
-        margin: 3rem 0;
+        margin: 1rem 0;
     }
 
-    .navlist a:hover, 
+    .navlist a:hover,
     .navlist a.active {
         padding: 1rem;
         border-radius: 0.5rem;
-        border-bottom: 0.5rem solid var(--principal-color);
+        border-bottom: 3px solid var(--principal-color);
     }
-    
 }
+
 
 section {
     min-height: 100vh;
@@ -133,6 +149,7 @@ section {
 }
 
 .home {
+    padding-top: 95px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -174,6 +191,7 @@ span {
 }
 
 .home-content p {
+    text-align: justify;
     font-size: 1.8rem;
     font-weight: 500;
 }
@@ -305,24 +323,28 @@ span {
 }
 
 /* Sessão de serviços */
-
 .services {
     background: var(--secundaria-cf-color);
+    padding: 5rem 2%; /* Ajuste para telas menores */
 }
+
 .services-container {
-    display: grid;
-    flex-direction: column;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
     gap: 2.5rem;
+    justify-content: center; /* Alinha cards no centro */
 }
 
 .service-box {
     background-color: var(--principal-color);
-    height: 35vh;
     border-radius: 3rem;
     cursor: pointer;
     transition: 0.3s ease;
+    padding: 2rem; /* Garante que o conteúdo fique interno ao card */
+    width: 100%; /* Largura padrão para telas menores */
+    max-width: 400px; /* Limita o tamanho máximo */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Estilo adicional */
+    margin: 0 auto
 }
 
 .service-box:hover {
@@ -336,21 +358,20 @@ span {
     display: flex;
     flex-direction: column;
     text-align: center;
-    max-height: 200px;
     justify-content: center;
-    align-items: baseline;
-    padding: 4em;
+    align-items: center; /* Centraliza os textos */
+    padding: 1rem; /* Adiciona espaço interno consistente */
 }
 
 .heading {
     text-align: center;
     font-size: 6rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .service-info h4 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-weight: 500;
     margin-bottom: 1rem;
 }
@@ -358,33 +379,45 @@ span {
 .service-info p {
     font-size: 1.6rem;
     font-weight: 400;
-    max-height: 100px;
-    margin: auto;
+    line-height: 1.5; /* Melhora a leitura */
+    margin: 0 auto;
+    word-wrap: break-word; /* Quebra textos longos */
+    overflow: visible; /* Permite que o texto seja exibido */
+    text-overflow: unset; /* Remove o corte com "..." */
+    max-height: unset; /* Remove a limitação de altura */
 }
 
-@media (max-width:991px) {
-    section {
-        padding: 10rem 3% 2rem;
-    }
-}
-
-@media (max-width:991px) {
-    .services h2{
-        margin-bottom: 3rem;
-    }
+/* Estilos responsivos */
+@media (max-width: 991px) {
     .services-container {
-        grid-template-columns: repeat(1, 1fr);
-    }   
-}
+        flex-direction: column; /* Empilha os cards */
+        gap: 1.5rem;
+    }
 
-@media (max-width:991px) {
-    
+    .service-box {
+        max-width: 100%; /* Garante que use toda a largura */
+        width: 90%;
+    }
+
+    .heading {
+        font-size: 4rem; /* Reduz o tamanho do título */
+    }
+
+    .service-info h4 {
+        font-size: 2rem; /* Ajuste adicional para títulos */
+    }
+
+    .service-info p {
+        font-size: 1.4rem; /* Reduz texto para legibilidade */
+        overflow: visible; /* Garante que todo texto seja visível */
+    }
 }
 
 /*Sessão de habilidades (skills)*/
 
 .skills {
-    background: var(--cf-color);
+    display: none;
+    background: var(--secundaria-cf-color);
 }
 
 .skills .container {
@@ -412,7 +445,7 @@ span {
     margin: auto;
     padding: 10px;
     border-radius: 1rem;
-    background: var(--cf-color);
+    background: var(--secundaria-cf-color);
     transition: 0.3s ease;
     cursor: pointer;
 }
@@ -498,7 +531,7 @@ span {
     border: 4px solid var(--principal-color);
     top: 15px;
     border-radius: 50%;
-    z-index: 100;
+    z-index: 1;
     font-size: 1.89rem;
     text-align: center;
     font-weight: 600;
@@ -558,6 +591,7 @@ span {
 
 .education .content .decs {
     margin-left: 1.5rem;
+    margin-right: 1.5rem;
     padding-bottom: 1rem;
 }
 
@@ -569,6 +603,7 @@ span {
 .education .content .decs p {
     font-size: 1.3rem;
     font-weight: 500;
+    text-align: justify;
 }
 
 @media screen and (max-width:600px) {
@@ -732,5 +767,135 @@ span {
 
     .footer {
         padding: 2rem 3%;
+    }
+}
+
+/* Sessão de Projetos */
+.projects {
+    background: var(--cf-color); /* Cor de fundo */
+    padding: 5rem 2%;
+}
+
+.projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    justify-content: center;
+    padding: 0 1rem; /* Adicionando um pouco de padding para telas pequenas */
+}
+
+.project-card {
+    background-color: var(--principal-color); /* Cor do card */
+    border-radius: 2rem;
+    overflow: hidden; /* Garante que nada ultrapasse os limites */
+    max-width: 400px; /* Limita o tamanho do card */
+    width: 100%; /* Responsividade */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    margin: 0 auto; /* Garante que os cards se centralizem automaticamente */
+}
+
+.project-card:hover {
+    transform: scale(1.05); /* Efeito ao passar o mouse */
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px; /* Altura fixa para uniformidade */
+    object-fit: cover; /* Ajusta a imagem ao tamanho */
+}
+
+.project-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.project-info h4 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.project-info p {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+.technologies {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 2.5rem; /* Tamanho dos ícones */
+}
+
+.technologies i {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.technologies i:hover {
+    transform: scale(1.2); /* Efeito ao passar o mouse */
+    color: var(--principal-color); /* Cor ao passar o mouse */
+}
+
+/* Responsividade */
+@media (max-width: 991px) {
+    .projects-container {
+        flex-direction: column; /* Empilha os cards */
+        gap: 2rem;
+        padding: 0 1rem; /* Ajuste do padding para telas pequenas */
+    }
+
+    .project-card {
+        max-width: 100%; /* Ocupa toda a largura disponível */
+        width: 100%; /* Garantir que ocupe 100% da largura */
+        margin: 0 auto; /* Centraliza os cards */
+    }
+
+    .project-info h4 {
+        font-size: 1.8rem;
+    }
+
+    .project-info p {
+        font-size: 1.4rem;
+    }
+
+    .technologies {
+        font-size: 2rem; /* Reduz o tamanho dos ícones */
+    }
+}
+
+/* Seção de ícones de tecnologia */
+.tech-icons {
+    display: flex;
+    justify-content: center; /* Alinha os ícones no centro */
+    gap: 2rem; /* Espaçamento entre os ícones */
+    margin-top: 3rem; /* Espaço entre a descrição e os ícones */
+}
+
+.tech-icons i {
+    font-size: 4rem; /* Tamanho dos ícones */
+    color: var(--principal-color); /* Cor dos ícones */
+    transition: transform 0.3s ease, color 0.3s ease; /* Efeito de transição */
+}
+
+/* Efeito ao passar o mouse sobre os ícones */
+.tech-icons i:hover {
+    transform: scale(1.2); /* Aumenta o ícone */
+    color: #fff; /* Muda a cor ao passar o mouse */
+}
+
+/* Responsividade */
+@media (max-width: 991px) {
+    .tech-icons {
+        gap: 1.5rem; /* Menor espaço entre os ícones em telas menores */
+    }
+
+    .tech-icons i {
+        font-size: 3rem; /* Ajuste do tamanho dos ícones em telas menores */
     }
 }

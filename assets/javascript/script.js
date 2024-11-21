@@ -25,3 +25,23 @@ setInterval(() => {
         element.innerHTML = words[wordLoop].slice(0,[letterLoop]) + typingBar;
     }
 }, timeDelay)
+
+// Menu Hamburguer
+document.getElementById('menu-icon').addEventListener('click', () => {
+    const navList = document.querySelector('.navlist');
+    navList.classList.toggle('active');
+});
+
+// Seleciona todos os links do menu
+const menuLinks = document.querySelectorAll('.navlist a');
+
+// Adiciona evento de clique em cada link
+menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        // Remove a classe "active" de todos os links
+        menuLinks.forEach(item => item.classList.remove('active'));
+
+        // Adiciona a classe "active" ao link clicado
+        link.classList.add('active');
+    });
+});
