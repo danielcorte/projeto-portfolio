@@ -1,30 +1,46 @@
 const element = document.querySelector("#home > div.home-content > h3 > span");
 
-element.innerHTML = "";
+const words = ["18 years old" ,"Bosch Developer", "Computer Science Student", "Brazilian", "Full Stack", 
+    "Systems Development Technician"];
 
-const words = ["Dev Bosch", "Estudante de CCo", "Full Stack"];
-
-const typingBar = "<span style'color: white; font-weight: 200;'>|<\span>";
+const typingBar = "<span style='color: white; font-weight: 700;'>|</span>";
 
 let letterLoop = 0;
 let wordLoop = 0;
+let timeDelay = 1000;
+let isDeleting = false; // Indica se estamos apagando a palavra
 
-let timeDelay = 200;
-
-setInterval(() => {
-    if (letterLoop == words[wordLoop].length) {
-        letterLoop = 0;
-        element.innerHTML = typingBar;
-        if (wordLoop == words.length - 1) {
-            wordLoop = 0;
-        } else {
-            wordLoop ++;
-        } 
-    } else {
+const typeEffect = () => {
+    if (!isDeleting) {
+        // Fase de escrita
+        element.innerHTML = words[wordLoop].slice(0, letterLoop + 1) + typingBar;
         letterLoop++;
-        element.innerHTML = words[wordLoop].slice(0,[letterLoop]) + typingBar;
+
+        if (letterLoop === words[wordLoop].length) {
+            // Quando a palavra termina de ser escrita, aguarda um tempo antes de começar a apagar
+            isDeleting = true;
+            setTimeout(typeEffect, 1000); // Pausa antes de apagar
+            return;
+        }
+    } else {
+        // Fase de remoção
+        element.innerHTML = words[wordLoop].slice(0, letterLoop) + typingBar;
+        letterLoop--;
+
+        if (letterLoop === 0) {
+            // Quando a palavra termina de ser apagada, vai para a próxima palavra
+            isDeleting = false;
+            wordLoop = (wordLoop + 1) % words.length; // Alterna entre as palavras
+        }
     }
-}, timeDelay)
+
+    // Ajusta a velocidade dependendo se está escrevendo ou apagando
+    const delay = isDeleting ? 100 : 200;
+    setTimeout(typeEffect, delay);
+};
+
+// Inicializa o efeito
+typeEffect();
 
 // Menu Hamburguer
 document.getElementById('menu-icon').addEventListener('click', () => {
